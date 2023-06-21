@@ -503,6 +503,9 @@
 				this.calculateTotal();
 			},
 			onChangeProduct() {
+				if (this.selectedProduct.Product_SlNo == '') {
+					return;
+				}
 				this.$refs.quantity.focus();
 			},
 			productTotal() {

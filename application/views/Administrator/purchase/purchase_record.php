@@ -187,9 +187,9 @@
 						<tr>
 							<th>Invoice No.</th>
 							<th>Date</th>
+							<th>Memo No.</th>
 							<th>Supplier Name</th>
 							<th>Sub Total</th>
-							<th>VAT</th>
 							<th>Discount</th>
 							<th>Transport Cost</th>
 							<th>Total</th>
@@ -203,9 +203,9 @@
 						<tr v-for="purchase in purchases">
 							<td>{{ purchase.PurchaseMaster_InvoiceNo }}</td>
 							<td>{{ purchase.PurchaseMaster_OrderDate }}</td>
+							<td style="text-align:right;">{{ purchase.PurchaseMaster_MemoNo }}</td>
 							<td>{{ purchase.Supplier_Name }}</td>
 							<td style="text-align:right;">{{ purchase.PurchaseMaster_SubTotalAmount }}</td>
-							<td style="text-align:right;">{{ purchase.PurchaseMaster_Tax }}</td>
 							<td style="text-align:right;">{{ purchase.PurchaseMaster_DiscountAmount }}</td>
 							<td style="text-align:right;">{{ purchase.PurchaseMaster_Freight }}</td>
 							<td style="text-align:right;">{{ purchase.PurchaseMaster_TotalAmount }}</td>
@@ -224,13 +224,13 @@
 					<tfoot>
 						<tr style="font-weight:bold;">
 							<td colspan="3" style="text-align:right;">Total</td>
-							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_SubTotalAmount)}, 0) }}</td>
-							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_Tax)}, 0) }}</td>
-							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_DiscountAmount)}, 0) }}</td>
-							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_Freight)}, 0) }}</td>
-							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_TotalAmount)}, 0) }}</td>
-							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_PaidAmount)}, 0) }}</td>
-							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_DueAmount)}, 0) }}</td>
+							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_SubTotalAmount)}, 0).toFixed(2) }}</td>
+							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_Tax)}, 0).toFixed(2) }}</td>
+							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_DiscountAmount)}, 0).toFixed(2) }}</td>
+							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_Freight)}, 0).toFixed(2) }}</td>
+							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_TotalAmount)}, 0).toFixed(2) }}</td>
+							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_PaidAmount)}, 0).toFixed(2) }}</td>
+							<td style="text-align:right;">{{ purchases.reduce((prev, curr)=>{return prev + parseFloat(curr.PurchaseMaster_DueAmount)}, 0).toFixed(2) }}</td>
 							<td></td>
 							<td></td>
 						</tr>

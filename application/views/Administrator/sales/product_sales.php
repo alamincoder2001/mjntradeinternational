@@ -138,7 +138,7 @@
 								<div class="form-group">
 									<label class="col-xs-3 control-label no-padding-right"> Product </label>
 									<div class="col-xs-8">
-										<v-select v-bind:options="products" v-model="selectedProduct" label="display_text" v-on:input="productOnChange"></v-select>
+										<v-select v-bind:options="products" id="product" v-model="selectedProduct" label="display_text" v-on:input="productOnChange"></v-select>
 									</div>
 									<div class="col-xs-1" style="padding: 0;">
 										<a href="<?= base_url('product')?>" class="btn btn-xs btn-danger" style="height: 25px; border: 0; width: 27px; margin-left: -10px;" target="_blank" title="Add New Product"><i class="fa fa-plus" aria-hidden="true" style="margin-top: 5px;"></i></a>
@@ -566,6 +566,9 @@
 				})
 			},
 			async productOnChange(){
+				if (this.selectedProduct.Product_SlNo == '') {
+					return;
+				}
 				if((this.selectedProduct.Product_SlNo != '' || this.selectedProduct.Product_SlNo != 0) && this.sales.isService == 'false'){
 					this.productStock = await axios.post('/get_product_stock', {productId: this.selectedProduct.Product_SlNo}).then(res => {
 						return res.data;
@@ -621,6 +624,8 @@
 				this.cart.push(product);
 				this.clearProduct();
 				this.calculateTotal();
+
+				document.querySelector("#product [type='search']").focus();
 			},
 			removeFromCart(ind){
 				this.cart.splice(ind, 1);

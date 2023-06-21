@@ -135,8 +135,8 @@
 						<tr>
 							<th>Invoice No.</th>
 							<th>Date</th>
+							<th>Memo No.</th>
 							<th>Customer Name</th>
-							<th>Employee Name</th>
 							<th>Saved By</th>
 							<th>Product Name</th>
 							<th>Price</th>
@@ -150,8 +150,8 @@
 							<tr>
 								<td>{{ sale.SaleMaster_InvoiceNo }}</td>
 								<td>{{ sale.SaleMaster_SaleDate }}</td>
+								<td>{{ sale.SaleMaster_MemoNo }}</td>
 								<td>{{ sale.Customer_Name }}</td>
-								<td>{{ sale.Employee_Name }}</td>
 								<td>{{ sale.AddBy }}</td>
 								<td>{{ sale.saleDetails[0].Product_Name }}</td>
 								<td style="text-align:right;">{{ sale.saleDetails[0].SaleDetails_Rate }}</td>
@@ -198,8 +198,8 @@
 						<tr>
 							<th>Invoice No.</th>
 							<th>Date</th>
+							<th>Memo No.</th>
 							<th>Customer Name</th>
-							<th>Employee Name</th>
 							<th>Saved By</th>
 							<th>Sub Total</th>
 							<th>VAT</th>
@@ -216,8 +216,8 @@
 						<tr v-for="sale in sales">
 							<td>{{ sale.SaleMaster_InvoiceNo }}</td>
 							<td>{{ sale.SaleMaster_SaleDate }}</td>
+							<td>{{ sale.SaleMaster_MemoNo }}</td>
 							<td>{{ sale.Customer_Name }}</td>
-							<td>{{ sale.Employee_Name }}</td>
 							<td>{{ sale.AddBy }}</td>
 							<td style="text-align:right;">{{ sale.SaleMaster_SubTotalAmount }}</td>
 							<td style="text-align:right;">{{ sale.SaleMaster_TaxAmount }}</td>
@@ -240,13 +240,13 @@
 					<tfoot>
 						<tr style="font-weight:bold;">
 							<td colspan="5" style="text-align:right;">Total</td>
-							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_SubTotalAmount)}, 0) }}</td>
-							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_TaxAmount)}, 0) }}</td>
-							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_TotalDiscountAmount)}, 0) }}</td>
-							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_Freight)}, 0) }}</td>
-							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_TotalSaleAmount)}, 0) }}</td>
-							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_PaidAmount)}, 0) }}</td>
-							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_DueAmount)}, 0) }}</td>
+							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_SubTotalAmount)}, 0).toFixed(2) }}</td>
+							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_TaxAmount)}, 0).toFixed(2) }}</td>
+							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_TotalDiscountAmount)}, 0).toFixed(2) }}</td>
+							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_Freight)}, 0).toFixed(2) }}</td>
+							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_TotalSaleAmount)}, 0).toFixed(2) }}</td>
+							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_PaidAmount)}, 0).toFixed(2) }}</td>
+							<td style="text-align:right;">{{ sales.reduce((prev, curr)=>{return prev + parseFloat(curr.SaleMaster_DueAmount)}, 0).toFixed(2) }}</td>
 							<td></td>
 							<td></td>
 						</tr>
